@@ -1,0 +1,72 @@
+{% load static %}
+<head>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" integrity="sha384-PmY9l28YgO4JwMKbTvgaS7XNZJ30MK9FAZjjzXtlqyZCqBY6X6bXIkM++IkyinN+" crossorigin="anonymous">
+  <link rel= "stylesheet" href= "{% static "css/graph.css" %}">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-
+  q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin=" anonymous"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js" integrity="sha384-vhJnz1OVIdLktyixHY4Uk3OHEwdQqPppqYR8+5mjsauETgLOcEynD9oPHhhz18Nw" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="{% static "js/graph.js" %}"></script>
+
+  <title>Graph</title>
+</head>
+<body>
+  <div class="expression">
+    <div class="input_box">
+      <h3>Expression:<input id="result" type="text" class="form-control" name="expression" onkeyup="validate(this)" placeholder="Expression"><button class="exp_button" type="button" name="button" onclick="graph_cal()">Submit</button> <button class="exp_button" type="button" name="button" onclick="reset()">Reset</button></h3>
+      <p id="error_html"></p>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+          <canvas id="mychart" width="300" height="300"></canvas>
+        </div>
+      </div>
+  </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    var input_val = $('#result').val();
+    $.ajax({
+      method:"GET",
+      url: "",
+      data: {param: input_val},
+      success: function(data){
+          $('#result').val('');
+          var x = JSON.parse("[" + data.xaxis + "]");
+          var y = JSON.parse("[" + data.yaxis + "]");
+          graph(x,y);
+        },
+      error: function(error_data){
+              alert(error_data);
+          }
+        });
+      });
+});
+
+function graph(x,y){
+  var ctx = document.getElementById('mychart').getContext('2d');
+  var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'line',
+      // The data for our dataset
+      data: {
+          labels: x,
+          datasets: [{
+              label: 'My First dataset',
+              backgroundColor: 'rgb(255, 99, 132)',
+              borderColor: 'rgb(255, 99, 132)',
+              data: y
+          }]
+      },
+
+      // Configuration options go here
+      options: {}
+  });
+}
+</script>

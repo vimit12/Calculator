@@ -1,0 +1,65 @@
+<!-- {% load static %} -->
+{% include "base.html" %}
+
+<link rel= "stylesheet" href= "{% static "css/graph.css" %}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script type="text/javascript" src="{% static "js/graph.js" %}"></script>
+<!-- <div class="jumbotron jumbotron-fluid"> -->
+  <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                  <h4><input id="result" type="text" class="form-control" name="expression"  placeholder="Expression" onkeyup="validate(this)">
+                  <p id="error_html"></p>
+                  <button class="example_d" type="button" name="button" onclick="graph_cal()">Submit</button>
+                  <button class="example_d reset" type="button" name="button" onclick="reset()">Reset</button></h4>
+                  <canvas id="graph_plot" width="300" height="300"></canvas>
+            </div>
+        </div>
+  </div>
+<!-- </div> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    var input_val = $('#result').val();
+    $.ajax({
+      method:"GET",
+      url: "",
+      data: {param: input_val},
+      success: function(data){
+          $('#result').val('');
+          var x = JSON.parse("[" + data.xaxis + "]");
+          var y = JSON.parse("[" + data.yaxis + "]");
+          graph(x,y,data.graph,data.color);
+        },
+      error: function(error_data){
+              // alert(error_data.e);
+          }
+        });
+      });
+});
+
+function graph(x,y,graph_type,color){
+  var ctx = document.getElementById('graph_plot').getContext('2d');
+  var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'line',
+      // The data for our dataset
+      data: {
+          labels: x,
+          datasets: [{
+              label: graph_type,
+              pointRadius:0,
+              backgroundColor: color,
+              borderColor: '#000000',
+              data: y
+          }]
+      },
+
+      // Configuration options go here
+      options: {}
+  });
+}
+</script>

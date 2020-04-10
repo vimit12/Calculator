@@ -1,0 +1,169 @@
+<!-- {% load static %} -->
+{% include "base.html" %}
+
+<link rel= "stylesheet" href= "{% static "css/area.css" %}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script type="text/javascript" src="{% static "js/area.js" %}"></script>
+<div class="container">
+  <div class="row">
+    <div class="geometry_val">
+      <input id="Circle" class="btn btn-lg button Circle" type="button" value="Circle" onclick="area(this.value)"/>
+      <input id="Rectangle" class="btn btn-lg button Rectangle" type="button" value="Rectangle" onclick="area(this.value)"/>
+      <input id="Square" class="btn btn-lg button Circle" type="button" value="Square" onclick="area(this.value)"/>
+      <input id="Parallelogram" class="btn btn-lg button Circle" type="button" value="Parallelogram" onclick="area(this.value)"/>
+      <input id="Rhombus" class="btn btn-lg button Circle" type="button" value="Rhombus" onclick="area(this.value)"/>
+      <input id="Traingle" class="btn btn-lg button Circle" type="button" value="Traingle" onclick="area(this.value)"/>
+
+
+        <div id="show_circle" class="">
+          <div class="col-sm-4">
+              <input id="result1" class="field_val cir_in" type="text" value="" placeholder="Enter Radius" onkeypress="return digit_only(this, event);">
+          </div>
+          <div class="col-sm-4">
+              <button class="btn btn-lg button cal_val cir" type="button" name="button" onclick="circle_val()">Submit</button>
+              <button class="btn btn-lg button cal_val cir" type="button" name="button" onclick="reset()">Reset</button>
+          </div>
+        </div>
+        <div id="show_rectangle" class="">
+          <div class="col-sm-4">
+              <input id="result2"  class="field_val" type="text" value="" placeholder="Enter Length" onkeypress="return digit_only(this, event);">
+              <input id="result3"  class="field_val" type="text" value="" placeholder="Enter Width" onkeypress="return digit_only(this, event);">
+          </div>
+          <div class="col-sm-4">
+              <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="rec_val()">Submit</button>
+              <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="reset()">Reset</button>
+          </div>
+        </div>
+          <div id="show_square" class="">
+            <div class="col-sm-4">
+                <input id="result4"  class="field_val cir_in" type="text" value="" placeholder="Enter Size" onkeypress="return digit_only(this, event);">
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-lg button cal_val sq" type="button" name="button" onclick="sq_val()">Submit</button>
+                <button class="btn btn-lg button cal_val sq" type="button" name="button" onclick="reset()">Reset</button>
+            </div>
+          </div>
+        <div id="show_parr" class="">
+            <div class="col-sm-4">
+                <input id="result5"  class="field_val" type="text" value="" placeholder="Enter Height" onkeypress="return digit_only(this, event);">
+                <input id="result6"  class="field_val" type="text" value="" placeholder="Enter Base" onkeypress="return digit_only(this, event);">
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="parr_val()">Submit</button>
+                <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="reset()">Reset</button>
+            </div>
+        </div>
+        <div id="show_rhombus" class="">
+          <div class="col-sm-4">
+              <input id="result7"  class="field_val" type="text" value="" placeholder="Enter First Diagonal" onkeypress="return digit_only(this, event);">
+              <input id="result8"  class="field_val" type="text" value="" placeholder="Enter Second Diagonal" onkeypress="return digit_only(this, event);">
+          </div>
+          <div class="col-sm-4">
+              <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="rhom_val()">Submit</button>
+              <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="reset()">Reset</button>
+          </div>
+        </div>
+        <div id="show_traingle" class="">
+            <div class="col-sm-4">
+                <input id="result9"  class="field_val" type="text" value="" placeholder="Enter Height" onkeypress="return digit_only(this, event);">
+                <input id="result10"  class="field_val" type="text" value="" placeholder="Enter Base" onkeypress="return digit_only(this, event);">
+
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="tri_val()">Submit</button>
+                <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="reset()">Reset</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <p id="error_msg" style="font-size: 12px; color: red; margin-left: 6em; margin-top: 1em;"></p>
+  <p id="equate_val" style="font-size: 20px; color: green; margin-left: 6em; margin-top: 1em;"></p>
+  <canvas id="area_plot" width="300" height="300"></canvas>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  var cir = document.getElementById("show_circle");
+  cir.style.display = "none";
+  var rec = document.getElementById("show_rectangle");
+  rec.style.display = "none";
+  var sq = document.getElementById("show_square");
+  sq.style.display = "none";
+  var parr = document.getElementById("show_parr");
+  parr.style.display = "none";
+  var rhom = document.getElementById("show_rhombus");
+  rhom.style.display = "none";
+  var tri = document.getElementById("show_traingle");
+  tri.style.display = "none";
+  // $("input").click(function(){
+  //   var btn_val = $('#Circle').val();
+  //   $.ajax({
+  //     method:"GET",
+  //     url: "",
+  //     data: {param: btn_val},
+  //     success: function(data){
+  //       alert(btn_val);
+  //     error: function(error_data){
+  //             // alert(error_data.e);
+  //         }
+  //       });
+  //     });
+});
+
+// function graph(x,y,graph_type,color){
+//   var ctx = document.getElementById('graph_plot').getContext('2d');
+//   var chart = new Chart(ctx, {
+//       // The type of chart we want to create
+//       type: 'line',
+//       // The data for our dataset
+//       data: {
+//           labels: x,
+//           datasets: [{
+//               label: graph_type,
+//               backgroundColor: color,
+//               borderColor: '#000000',
+//               data: y
+//           }]
+//       },
+//
+//       // Configuration options go here
+//       options: {}
+//   });
+// }
+var msg = document.getElementById("error_msg");
+
+  function isValid(el, evnt) {
+            var charC = (evnt.which) ? evnt.which : evnt.keyCode;
+            if (charC == 46) {
+                if (el.value.indexOf('.') === -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                if (charC > 31 && (charC < 48 || charC > 57))
+                    return false;
+            }
+            return true;
+        }
+
+        function digit_only(t, evnt) {
+            var a = isValid(t, evnt);
+            if (a) {
+                msg.innerHTML = "";
+            } else {
+                msg.innerHTML = "Invalid Input, digits only.";
+            }
+            return a;
+        }
+
+    function reset() {
+        $('.field_val').val('');
+        document.getElementById("error_msg").innerHTML = "";
+        document.getElementById("equate_val").innerHTML = "";
+      }
+</script>

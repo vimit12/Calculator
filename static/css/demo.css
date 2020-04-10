@@ -1,0 +1,57 @@
+body{
+    background-color: #fff2de;
+}
+
+.row_container {
+    padding-top: 15px;
+    width: 87em;
+    height: 20em;
+    border: 3px groove rgba(183,18,224,0.27);
+    border-radius: 17px 17px 17px 17px;
+}
+
+#result{
+  border: 3px solid #555;
+  border-radius: 17px 17px 17px 17px;
+  margin-left: 5px;
+  width: 60em;
+  height: 5em;
+  font-size:20px;
+}
+#btn_size{
+  width: 77px;
+  background-color:#151026;
+  color: white;
+}
+
+#capture_val{
+  color: red;
+}
+
+/* * {
+  box-sizing: border-box;
+} */
+
+/* Create four equal columns that floats next to each other */
+.column {
+  margin-top: 10em;
+  margin-left: 15em;
+  float: left;
+  width: 25%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  /* content: ""; */
+  display: table;
+  clear: both;
+}
+.solve{
+  background-color: #fcd2eb;
+  height: 3.5em;
+  width: 23.5em;
+  border-radius: 8px;
+  color: #0f0f0f;
+}

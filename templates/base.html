@@ -1,0 +1,31 @@
+{%load static%}
+
+{% block header %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" integrity="sha384-PmY9l28YgO4JwMKbTvgaS7XNZJ30MK9FAZjjzXtlqyZCqBY6X6bXIkM++IkyinN+" crossorigin="anonymous">
+<!-- <link rel= "stylesheet" href= "{% static "css/graph.css" %}"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-
+q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin=" anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js" integrity="sha384-vhJnz1OVIdLktyixHY4Uk3OHEwdQqPppqYR8+5mjsauETgLOcEynD9oPHhhz18Nw" crossorigin="anonymous"></script>
+<style media="screen">
+  #side_bar{
+    background-color: #80e3ff;
+  }
+  .jumbotron{
+    padding: 1em;
+    margin-top: 6em;
+    margin-left: 10em;
+    width: 50em;
+    height: 10em;
+  }
+</style>
+<div id="side_bar" class="w3-sidebar w3-bar-block" style="width:70px">
+  <a href="/" class="w3-bar-item w3-button"><img src="{% static 'image/home.ico' %}" alt=""></a>
+  <a href="\area" class="w3-bar-item w3-button"><img src="{% static 'image/area.ico' %}" alt=""></a>
+  <a href="\draw" class="w3-bar-item w3-button"><img src="{% static 'image/graph.ico' %}" alt=""></a>
+  <a href="\basic" class="w3-bar-item w3-button"><img src="{% static 'image/calculator.ico' %}" alt=""></a>
+
+</div>
+{% endblock %}

@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+<!-- {% load static %} -->
+{% include "base.html" %}
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" integrity="sha384-PmY9l28YgO4JwMKbTvgaS7XNZJ30MK9FAZjjzXtlqyZCqBY6X6bXIkM++IkyinN+" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="{% static "css/bootstrap.css" %}"> -->
+    <link rel="stylesheet" href="{% static "css/demo.css" %}">
+    <script type="text/javascript" src="{% static "js/calculator.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/scncalculator.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/fraction.js" %}"></script>
+</head>
+
+<body>
+
+<div class="row">
+  <div class="column" >
+      <input id="result" type="text" class="form-control" name="result" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+      <p id="capture_val"></p><br>
+      <div class="row_container">
+      <div class="row_1">&nbsp;
+        <input id="btn_size" class="btn btn-lg button type3" type="button" value="1" onclick="dis('1')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="2" onclick="dis('2')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="3" onclick="dis('3')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="÷" onclick="dis('/')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="C" onclick="clr()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="π" onclick="value_pi()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="x²" onclick="power_cal_two()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="&#8730;" onclick="sqrt_two()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="sin&#952;" onclick="sin_val()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="cos&#952;" onclick="cos_val()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="tan&#952;" onclick="tan_val()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="cosec&#952;" onclick="cosec_val()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="sec&#952;" onclick="sec_val()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="cot&#952;" onclick="cot_val()"/>&nbsp;
+        <br>
+      </div>&nbsp;
+      <div class="row_2">&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="4" onclick="dis('4')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="5" onclick="dis('5')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="6" onclick="dis('6')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="-" onclick="dis('-')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="M+" onclick="memory(this.value)"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="e" onclick="value_e()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="x³" onclick="power_cal_three()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="&#8731;" onclick="sqrt_three()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="10^x" onclick="ten_x()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="log" onclick="log_ten()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="ln" onclick="ln_two()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="sinh" onclick="sinh_val()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="cosh" onclick="cosh_val()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="tanh" onclick="tanh_val()"/>&nbsp;
+        <br>
+      </div>&nbsp;
+      <div class="row_3">&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="7" onclick="dis('7')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="8" onclick="dis('8')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="9" onclick="dis('9')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="+" onclick="dis('+')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="M-" onclick="memory(this.value)"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="|x|" onclick="mod_x()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="1/x" onclick="reverse_val()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="x^y" onclick="power_x_to_y()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button counter" type="button" value="2^x" onclick="two_x()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button counter" type="button" value="logab" onclick="log_x_y()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button counter" type="button" value="e^x" onclick="e_x()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="asin" onclick="asin_val()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="acos" onclick="acos_val()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="atan" onclick="atan_val()"/>&nbsp;
+        <br>
+      </div>&nbsp;
+      <div class="row_4">&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="." onclick="dis('.')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="0" onclick="dis('0')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="<<" onclick="clear_step()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="×" onclick="dis('*')"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="MR" onclick="memory(this.value)"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button dis_button" type="button" value="a/b" onclick="frac()"/>&nbsp;
+        <input id="" class="solve" type="button" value="=" onclick="solve()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="%" onclick="percentage_cal()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="n!" onclick="Factorial()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="mod" onclick="mod()"/>&nbsp;
+        <input id="btn_size" class="btn btn-lg button" type="button" value="nth&#8730;" onclick="nth_root()"/>&nbsp;
+        <br>
+      </div>&nbsp;
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>
+
+{% comment %} plugin for jquery and bootstrap {% endcomment %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-
+q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin=" anonymous"></script><!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js" integrity="sha384-vhJnz1OVIdLktyixHY4Uk3OHEwdQqPppqYR8+5mjsauETgLOcEynD9oPHhhz18Nw" crossorigin="anonymous"></script>
+<script type="text/javascript">
+// document.getElementsByClassName("dis_button").disabled = true;
+$( document ).ready(function() {
+  $(".dis_button").prop('disabled', true);
+});
+</script>
