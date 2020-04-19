@@ -1,0 +1,108 @@
+{%load static%}
+
+<head>
+  <title>Contact V3</title>
+  {% block header %}
+  {% include "base.html" %}
+  {% endblock %}
+
+</head>
+<link rel= "stylesheet" href= "{% static "css/email.css" %}">
+
+<body>
+  <header>
+</header>
+
+<div id="form">
+
+  <div class="fish" id="fish"></div>
+  <div class="fish" id="fish2"></div>
+  <h1 id="mailer">Contact us</h1>
+
+  <form  id="waterform" method="post" style="display: block">
+
+    <div class="formgroup" id="name-form">
+      <label for="name">Your name*</label>
+      <input type="text" id="name" name="name" />
+        {% if name %}
+          <p class="error_msg7" style="font-size: 12px;color: red;margin-left: 1em;">{{name}}</p>
+        {% endif %}
+    </div>
+
+    <div class="formgroup" id="name-form">
+      <label for="name">Subject*</label>
+      <input type="text" id="subject" name="subject" />
+        {% if subject %}
+          <p class="error_msg7" style="font-size: 12px;color: red;margin-left: 1em;">{{subject}}</p>
+        {% endif %}
+    </div>
+
+    <div class="formgroup" id="email-form">
+      <label for="email">Your e-mail*</label>
+      <input type="text" id="email" name="email" />
+        {% if email %}
+          <p class="error_msg7" style="font-size: 12px;color: red;margin-left: 1em;">{{email}}</p>
+        {% endif %}
+    </div>
+
+    <div class="formgroup" id="message-form">
+      <label for="message">Your message</label>
+      <textarea id="message" name="message"></textarea>
+    </div>
+
+    <input type="submit" value="Send your message!" onclick="send_mail()" />
+  </form>
+
+</div>
+</body>
+
+
+<script type="text/javascript">
+
+  $("document").ready(function () {
+  $('input[type="text"], input[type="email"], textarea').focus(function () {
+    var background = $(this).attr("id");
+    $("#" + background + "-form").addClass("formgroup-active");
+    $("#" + background + "-form").removeClass("formgroup-error");
+  });
+  $('input[type="text"], input[type="email"], textarea').blur(function () {
+    var background = $(this).attr("id");
+    $("#" + background + "-form").removeClass("formgroup-active");
+  });
+
+  function errorfield(field) {
+    $(field).addClass("formgroup-error");
+    console.log(field);
+  }
+
+  $("#waterform").submit(function () {
+    var stopsubmit = false;
+
+    if ($("#name").val() == "") {
+      errorfield("#name-form");
+      stopsubmit = true;
+    }
+    if ($("#email").val() == "") {
+      errorfield("#email-form");
+      stopsubmit = true;
+    }
+    if (stopsubmit) return false;
+  });
+});
+
+  // function send_mail(){
+  //   var x = document.getElementById("waterform");
+  //   // var y = document.getElementById("display_after_submit");
+  //
+  //   document.getElementById("mailer").innerHTML = "";
+  //   // alert("{{sent}}");
+  //   if (x.style.display === "block") {
+  //       x.style.display = "none";
+  //       // y.style.display = "block";
+  //     } else {
+  //       x.style.display = "block";
+  //       // y.style.display = "None";
+  //     }
+  //   }
+
+</script>

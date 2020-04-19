@@ -17,10 +17,10 @@
 <body>
 
 <div class="row">
-  <div class="column" >
-      <input id="result" type="text" class="form-control" name="result" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-      <p id="capture_val"></p><br>
-      <div class="row_container">
+  <div class="col-sm-8 column" >
+    <input id="result" type="text" class="form-control" name="result" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+    <p id="capture_val"></p><br>
+    <div class="row_container">
       <div class="row_1">&nbsp;
         <input id="btn_size" class="btn btn-lg button type3" type="button" value="1" onclick="dis('1')"/>&nbsp;
         <input id="btn_size" class="btn btn-lg button" type="button" value="2" onclick="dis('2')"/>&nbsp;
@@ -87,9 +87,13 @@
         <br>
       </div>&nbsp;
     </div>
+    </div>
+  </div>
+  <div class="col-sm-4" >
   </div>
 </div>
 
+{% include "footer.html" %}
 </body>
 
 </html>

@@ -1,0 +1,37 @@
+{%load static%}
+
+<link href='https://fonts.googleapis.com/css?family=Arbutus' rel='stylesheet'>
+
+<head>
+  <title>Contact V3</title>
+  {% block header %}
+  {% include "base.html" %}
+  {% endblock %}
+
+</head>
+<style media="screen">
+  body{
+    /* background: url("{% static 'image/giphy.gif' %}"); */
+    /* background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+  }
+  .container{
+    margin-top: 5em;
+    margin-left: 15em;
+  }
+</style>
+
+<body>
+<div class="container">
+  {% if sent %}
+    <img src="{% static 'image/mail.gif' %}" alt="" style="background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;">
+    <p style="font-family: 'Arima Madurai';font-size: 22px;color:#03ad0f;margin-left: 1.5em;">Thank You, we ll get back to you soon</p>
+  {% else %}
+    <img src="{% static 'image/mail_not_sent.png' %}" alt="">
+    <p style="font-family: 'Arima Madurai';font-size: 22px;color:#c90616;margin-left: 1.5em;">Please try again later, email not sent</p>
+  {% endif %}
+</div>
+</body>

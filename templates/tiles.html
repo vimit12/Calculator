@@ -1,12 +1,326 @@
 {%load static%}
+<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+<script type="text/javascript" src="{% static "js/titles.js" %}"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-
+q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin=" anonymous"></script>
+
+<script src="https://code.jquery.com/ui/3.3.1/jquery-ui.js"></script>
+
 {% block kids %}
-<div class="container">
-  <div class="jumbotron">
+<style media="screen">
+
+  .jumbotron{
+    margin-top: 10em;
+    padding: 2em;
+  }
+
+  label{margin-left: 20px;}
+  #datepicker{width:180px; margin: 0 20px 20px 20px;}
+  #datepicker > span:hover{cursor: pointer;}
+  #error_msg{
+    margin-left: 1em;
+    color: red;
+  }
+  #error_msg1{
+    margin-left: 1em;
+    color: red;
+    font-size: 16px;
+  }
+  #success_msg{
+    margin-left: 1em;
+    color: #0a8efa;
+    font-size: 16px
+  }
+  #success_msg1{
+    margin-left: 1em;
+    color: #12fc45;
+    font-size: 16px;
+  }
+
+  html {
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  font-size: 100%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin:0;
+  padding:0;
+}
+.mid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top:1em;
+}
+
+
+/* Switch starts here */
+.rocker {
+  display: inline-block;
+  position: relative;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: #888;
+  width: 7em;
+  height: 4em;
+  overflow: hidden;
+  border-bottom: 0.5em solid #eee;
+}
+
+.rocker-small {
+  font-size: 0.75em; /* Sizes the switch */
+  margin: 1em;
+}
+
+.rocker::before {
+  content: "";
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #999;
+  border: 0.5em solid #eee;
+  border-bottom: 0;
+}
+
+.rocker input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-left,
+.switch-right {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5em;
+  width: 3em;
+  transition: 0.2s;
+}
+
+.switch-left {
+  height: 2.4em;
+  width: 2.75em;
+  left: 0.85em;
+  bottom: 0.4em;
+  background-color: #ddd;
+  transform: rotate(15deg) skewX(15deg);
+}
+
+.switch-right {
+  right: 0.5em;
+  bottom: 0;
+  background-color: #bd5757;
+  color: #fff;
+}
+
+.switch-left::before,
+.switch-right::before {
+  content: "";
+  position: absolute;
+  width: 0.4em;
+  height: 2.45em;
+  bottom: -0.45em;
+  background-color: #ccc;
+  transform: skewY(-65deg);
+}
+
+.switch-left::before {
+  left: -0.4em;
+}
+
+.switch-right::before {
+  right: -0.375em;
+  background-color: transparent;
+  transform: skewY(65deg);
+}
+
+input:checked + .switch-left {
+  background-color: #0084d0;
+  color: #fff;
+  bottom: 0px;
+  left: 0.5em;
+  height: 2.5em;
+  width: 3em;
+  transform: rotate(0deg) skewX(0deg);
+}
+
+input:checked + .switch-left::before {
+  background-color: transparent;
+  width: 3.0833em;
+}
+
+input:checked + .switch-left + .switch-right {
+  background-color: #ddd;
+  color: #888;
+  bottom: 0.4em;
+  right: 0.8em;
+  height: 2.4em;
+  width: 2.75em;
+  transform: rotate(-15deg) skewX(-15deg);
+}
+
+input:checked + .switch-left + .switch-right::before {
+  background-color: #ccc;
+}
+
+/* Keyboard Users */
+input:focus + .switch-left {
+  color: #333;
+}
+
+input:checked:focus + .switch-left {
+  color: #fff;
+}
+
+input:focus + .switch-left + .switch-right {
+  color: #fff;
+}
+
+input:checked:focus + .switch-left + .switch-right {
+  color: #333;
+}
+#display3{
+  width: 20%;
+  height: 100px;
+}
+</style>
+  <div class="jumbotron jumbotron-fluid">
     <a href="\kids" class="w3-button"><img src="{% static 'image/child.ico' %}" alt=""><p>Alphabets</p></a>
     <a href="\body" class="w3-button"><img src="{% static 'image/body.ico' %}" alt=""><p>Body Parts</p></a>
     <a href="\fruits" class="w3-button"><img src="{% static 'image/fruits.ico' %}" alt=""><p>Fruits</p></a>
     <a href="\animal" class="w3-button"><img src="{% static 'image/animal.ico' %}" alt=""><p>Animals</p></a>
     <a href="\vehicle" class="w3-button"><img src="{% static 'image/vehicle.ico' %}" alt=""><p>Vehicles</p></a>
+    <a class="w3-button" data-toggle="modal" data-target="#exampleModal"><img src="{% static 'image/time.ico' %}" alt=""><h4>Time Calulator</h4></a>
+    <a class="w3-button" data-toggle="modal" data-target="#leapyear"><img src="{% static 'image/leap_year.ico' %}" alt=""><h4>Leap Year</h4></a>
+    <a href="\convert" class="w3-button"><img src="{% static 'image/conversion.ico' %}" alt=""><p>Convert</p></a>
+    <!-- tiles defenations ends here -->
+    <hr class="my-4">
+      <div class="row">
+        <div class="col-sm-6"><p>Welcome to the world of Science.</p></div>
+        <div class="col-sm-6" style="padding-left: 25em;"><div class="image_hover" id="image_hover"><img id="display3" src="" alt=""></div></div>
+      </div>
+      <div class="mid">
+        <label class="rocker rocker-small">
+          <input onchange="toggle_switch()" type="checkbox" id="checky">
+          <span class="switch-left">Yes</span>
+          <span class="switch-right">No</span>
+        </label>
+      </div>
+  </div>
+{% endblock %}
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h4 style="font-family: 'Sofia';font-size: 22px; color: #ba5afa;">Time Frame Calculator</h4>
+        <form>
+          <div class="form-group">
+                <label for="recipient-name" class="col-form-label" style="font-family: 'Almendra Display';font-size: 18px; color: #fc4ebf;">To:</label>
+                <input type="date" class="form-control" id="date1" />
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label" style="font-family: 'Almendra Display';font-size: 18px; color: #fc4ebf;">From:</label>
+            <input type="date" class="form-control" id="date2" />
+          </div>
+          <div >
+            <p id="error_msg"></p>
+            <p id="success_msg"></p>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" onclick="reset();" >Reset</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="date_val();">Calculate</button>
+      </div>
+    </div>
   </div>
 </div>
-{% endblock %}
+
+<div class="modal fade" id="leapyear" tabindex="-1" role="dialog" aria-labelledby="leapyearLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h4 style="font-family: 'Sofia';font-size: 22px; color: #ba5afa;">Find Whether Year is Leap or not</h4>
+        <form>
+          <div class="form-group">
+                <label for="recipient-name" class="col-form-label" style="font-family: 'Almendra Display';font-size: 18px; color: #fc4ebf;">Year:</label>
+                <input type="text" class="form-control" id="leap" onkeypress="return digit_only(this, event);" />
+          </div>
+          <div class="form-group">
+                <label for="recipient-name" class="col-form-label" style="font-family: 'Almendra Display';font-size: 18px; color: #fc4ebf;">Start Year:</label>
+                <input type="text" class="form-control" id="st_leap" onkeypress="return digit_only(this, event);" />
+                <label for="recipient-name" class="col-form-label" style="font-family: 'Almendra Display';font-size: 18px; color: #fc4ebf;">End Year:</label>
+                <input type="text" class="form-control" id="end_leap" onkeypress="return digit_only(this, event);" />
+                <textarea class="form-control" rows="5" style="margin-top: 1em;" id="textarea" disabled></textarea>
+          </div>
+
+          <div >
+            <p id="error_msg1"></p>
+            <p id="success_msg1"></p>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" onclick="reset_leap_year();" >Reset</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="leapyear();">Calculate</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $("document").ready(function () {
+        $("#display3").attr("src","{% static 'image/pic_bulboff.gif' %}");
+    });
+        var msg = document.getElementById("error_msg1");
+
+        function isValid(el, evnt) {
+                  var charC = (evnt.which) ? evnt.which : evnt.keyCode;
+                  if (charC == 46) {
+                      if (el.value.indexOf('.') === -1) {
+                          return true;
+                      } else {
+                          return false;
+                      }
+                  } else {
+                      if (charC > 31 && (charC < 48 || charC > 57))
+                          return false;
+                  }
+                  return true;
+              }
+
+        function digit_only(t, evnt) {
+                  var a = isValid(t, evnt);
+                  if (a) {
+                      msg.innerHTML = "";
+                  } else {
+                      msg.innerHTML = "Invalid Input, digits only.";
+                  }
+                  return a;
+              }
+
+        function toggle_switch(){
+          var toggle_value = $("#checky")[0].checked;
+          var y = document.getElementById("display3");
+          if (toggle_value==true){
+            y.getAttributeNode("src").value = "{% static 'image/pic_bulbon.gif' %}";
+          }
+          else if(toggle_value==false){
+            y.getAttributeNode("src").value = "{% static 'image/pic_bulboff.gif' %}";
+          }
+        }
+
+
+</script>

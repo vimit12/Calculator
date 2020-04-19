@@ -1,6 +1,106 @@
-<!-- {% load static %} -->
+{% load static %}
 {% include "base.html" %}
-{% include "tiles.html" %}
 
+<link rel= "stylesheet" href= "{% static "css/kids.css" %}">
+<script type="text/javascript" src="{% static "js/animal.js" %}"></script>
+<style media="screen">
+  #label{
+    margin-top: 2em;
+    margin-left: 15em;
+    font-size: 25px;
+    color: #222;
+    text-shadow: 0px 2px 3px #555;
+  }
 
-<h1>VIMIT</h1>
+  .chart1{
+    margin-top: 2em;
+    margin-left:2em;
+    width: 32em;
+    height: 25em;
+    border: 2px groove rgba(183,18,224,0.27);
+    border-radius: 17px 17px 17px 17px;
+  }
+  .chart2{
+    margin-top: 2em;
+    margin-left:10em;
+    width: 32em;
+    height: 25em;
+    border: 2px groove rgba(163,18,224,0.27);
+    border-radius: 17px 17px 17px 17px;
+  }
+
+  #display1{
+      border-radius: 28px;
+      padding: 3px;
+      width: 100%;
+      height: 100%;
+  }
+  #display2{
+      border-radius: 28px;
+      padding: 3px;
+      width: 100%;
+      height: 100%;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="column">
+        <div class="row_container">
+        <div class="row_1">&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="A" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="B" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="C" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="D" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="E" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="F" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="G" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="H" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="I" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="J" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="K" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="L" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="M" onclick="chart_val(this.value)"/>&nbsp;
+          <br>
+        </div>&nbsp;
+        <div class="row_2">&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="N" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="O" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="P" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="Q" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="R" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="S" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="T" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="U" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="V" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="W" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button dis" type="button" value="X" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="Y" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="Z" onclick="chart_val(this.value)"/>&nbsp;
+          <br>
+        </div>&nbsp;
+      </div>
+    </div>
+          <div id="chart_bind">
+              <div class="col-sm-6 chart1">
+                <img id="display1" src="" alt="">
+              </div>
+              <div class="col-sm-6 chart2">
+                <img id="display2" src="" alt="">
+              </div>
+              <div class="col-sm-12">
+                <p id="label"></p>
+              </div>
+          </div>
+  </div>
+  </div>
+</div>
+
+<script>
+    $("document").ready(function () {
+          $("#display1").attr("src","https://images.unsplash.com/photo-1541793647037-86afaddc1cf0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
+          $("#display2").attr("src","https://www.rd.com/wp-content/uploads/2015/02/ant-1-760x506.jpg");
+          document.getElementById("label").innerHTML = `A (a) is for Antelope and Ant `;
+          $(".dis").prop('disabled', true);
+    });
+</script>

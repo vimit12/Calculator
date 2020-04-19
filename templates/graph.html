@@ -5,22 +5,32 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script type="text/javascript" src="{% static "js/graph.js" %}"></script>
-  <div class="container">
     <div class="jumbotron">
+      <div class="container">
+          <div class="row">
             <div class="col-sm-6">
                   <h4><input id="result" type="text" class="form-control" name="expression"  placeholder="Expression" onkeyup="validate(this)"></h4>
                   <p id="error_html"></p>
             </div>
             <div class="col-sm-6">
-                  <button class="example_d" type="button" name="button" onclick="graph_cal()">Submit</button>
-                  <button class="example_d reset" type="button" name="button" onclick="reset()">Reset</button>
-                  <!-- <canvas id="graph_plot" width="300" height="300"></canvas> -->
+              <div class="row">
+                  <div class="col-sm-6"><button class="example_d" type="button" name="button" onclick="graph_cal()">Submit</button></div>
+                  <div class="col-sm-6"><button class="example_d reset" type="button" name="button" onclick="reset()">Reset</button></div>
+              </div>
             </div>
-        </div>
-        <div class="col-sm-6 graph_plot">
-          <canvas id="graph_plot" width="300" height="300"></canvas>
-        </div>
-</div>
+          </div>
+      </div>
+    </div>
+        <div class="row">
+          <div class="col-sm-6 graph_plot">
+            <canvas id="graph_plot" width="300" height="300"></canvas>
+          </div>
+          <div class="col-sm-6 graph_plot">
+          </div>
+       </div>
+
+  <!-- {% include "footer.html" %} -->
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>

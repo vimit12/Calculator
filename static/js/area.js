@@ -93,24 +93,24 @@ function circle_val() {
     document.getElementById("equate_val").innerHTML = `Area of Circle with Radius : ${cir} unit is ${area} sq. unit and Perimeter is ${perimeter} unit `;
     document.getElementById("result1").value="";
 
-    var ctx = document.getElementById('area_plot').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-        // The data for our dataset
-        data: {
-            labels: [0,1,2,3,4],
-            datasets: [{
-                label: "graph_type",
-                backgroundColor: '#000000',
-                borderColor: '#000000',
-                data: [0,1,2,3,4]
-            }]
-        },
-
-        // Configuration options go here
-        options: {}
-    });
+    // var ctx = document.getElementById('area_plot').getContext('2d');
+    // var chart = new Chart(ctx, {
+    //     // The type of chart we want to create
+    //     type: 'line',
+    //     // The data for our dataset
+    //     data: {
+    //         labels: [0,1,2,3,4],
+    //         datasets: [{
+    //             label: "graph_type",
+    //             backgroundColor: '#000000',
+    //             borderColor: '#000000',
+    //             data: [0,1,2,3,4]
+    //         }]
+    //     },
+    //
+    //     // Configuration options go here
+    //     options: {}
+    // });
 }
 
 function rec_val() {

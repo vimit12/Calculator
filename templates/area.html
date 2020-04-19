@@ -16,60 +16,60 @@
 
 
         <div id="show_circle" class="">
-          <div class="col-sm-4">
+          <div class="col-sm-6">
               <input id="result1" class="field_val cir_in" type="text" value="" placeholder="Enter Radius" onkeypress="return digit_only(this, event);">
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-6">
               <button class="btn btn-lg button cal_val cir" type="button" name="button" onclick="circle_val()">Submit</button>
               <button class="btn btn-lg button cal_val cir" type="button" name="button" onclick="reset()">Reset</button>
           </div>
         </div>
         <div id="show_rectangle" class="">
-          <div class="col-sm-4">
+          <div class="col-sm-6">
               <input id="result2"  class="field_val" type="text" value="" placeholder="Enter Length" onkeypress="return digit_only(this, event);">
               <input id="result3"  class="field_val" type="text" value="" placeholder="Enter Width" onkeypress="return digit_only(this, event);">
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-6">
               <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="rec_val()">Submit</button>
               <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="reset()">Reset</button>
           </div>
         </div>
           <div id="show_square" class="">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <input id="result4"  class="field_val cir_in" type="text" value="" placeholder="Enter Size" onkeypress="return digit_only(this, event);">
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <button class="btn btn-lg button cal_val sq" type="button" name="button" onclick="sq_val()">Submit</button>
                 <button class="btn btn-lg button cal_val sq" type="button" name="button" onclick="reset()">Reset</button>
             </div>
           </div>
         <div id="show_parr" class="">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <input id="result5"  class="field_val" type="text" value="" placeholder="Enter Height" onkeypress="return digit_only(this, event);">
                 <input id="result6"  class="field_val" type="text" value="" placeholder="Enter Base" onkeypress="return digit_only(this, event);">
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="parr_val()">Submit</button>
                 <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="reset()">Reset</button>
             </div>
         </div>
         <div id="show_rhombus" class="">
-          <div class="col-sm-4">
+          <div class="col-sm-6">
               <input id="result7"  class="field_val" type="text" value="" placeholder="Enter First Diagonal" onkeypress="return digit_only(this, event);">
               <input id="result8"  class="field_val" type="text" value="" placeholder="Enter Second Diagonal" onkeypress="return digit_only(this, event);">
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-6">
               <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="rhom_val()">Submit</button>
               <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="reset()">Reset</button>
           </div>
         </div>
         <div id="show_traingle" class="">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <input id="result9"  class="field_val" type="text" value="" placeholder="Enter Height" onkeypress="return digit_only(this, event);">
                 <input id="result10"  class="field_val" type="text" value="" placeholder="Enter Base" onkeypress="return digit_only(this, event);">
 
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="tri_val()">Submit</button>
                 <button class="btn btn-lg button cal_val rec" type="button" name="button" onclick="reset()">Reset</button>
             </div>
@@ -80,7 +80,7 @@
   <p id="equate_val" style="font-size: 20px; color: green; margin-left: 6em; margin-top: 1em;"></p>
   <canvas id="area_plot" width="300" height="300"></canvas>
 </div>
-
+{% include "footer.html" %}
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

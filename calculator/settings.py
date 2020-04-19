@@ -27,6 +27,7 @@ SECRET_KEY = '8dsn7h3biy6bc-6u839xuov=+1$@-8i$z3!&t@zw_5!(5o_*#h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -54,6 +55,17 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'calculator.urls'
+
+EMAIL_HOST= 'smtp.gmail.com'
+EMAIL_PORT= 587
+EMAIL_HOST_USER = 'vim.python.dj@gmail.com'
+EMAIL_HOST_PASSWORD='Bmvvv12#'
+EMAIL_USE_TLS= True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+ADMIN = [('Vimit', 'vim.python.dj@gmail.com'),('Pihu', 'pihu1212@gmail.com')]
+SERVER_EMAIL = 'django@gmail.com'
+# MANAGERS = (('VIMIT', 'vim.python.dj@gmail.com'),)
 
 TEMPLATES = [
     {

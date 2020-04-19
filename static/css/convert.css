@@ -1,0 +1,47 @@
+.container{
+  margin-right: 2em;
+  margin-left: 2em;
+}
+.jumbotron{
+  margin-top: 10em;
+  padding: 4em;
+  /* width: 60em;
+  height: 30em; */
+  background: #b8d3ff;
+  color: #1a0909;
+}
+.btn-color{
+  margin-left: 1em;
+  background: #b8ffd0;
+  color: #030303;
+}
+
+#error_msg1, #error_msg2, #error_msg3, #error_msg4, #error_msg5, #error_msg6{
+  color: red;
+  font-size: 12px;
+}
+
+.unit{
+  margin-bottom:1em;
+}
+.form-control{
+  width:36.5em;
+}
+.UnitInput{
+  width:15em;
+}
+.swap:hover{
+  background-color: #fa8c05;
+}
+.btn-danger{
+  background: #f01818;
+}
+.btn-primary:hover{
+  background: #94eaff;
+}
+
+#success_msg1, #success_msg2
+{
+  color: #04b527;
+  font-size: 14px;
+}

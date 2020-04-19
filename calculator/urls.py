@@ -27,5 +27,8 @@ urlpatterns = [
     path(r'fruits/', views.fruits),
     path(r'vehicle/', views.vehicle),
     path(r'animal/', views.animal),
+    path(r'convert/', views.convert),
+    path(r'email/', views.email),
+    # path(r'success.html/', views.success),
     path(r'draw/', views.draw_graph),
 ]

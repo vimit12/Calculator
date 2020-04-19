@@ -1,0 +1,174 @@
+{% load static %}
+{% include "base.html" %}
+
+<link rel= "stylesheet" href= "{% static "css/convert.css" %}">
+<script type="text/javascript" src="{% static "js/convert.js" %}"></script>
+
+<style media="screen">
+
+</style>
+
+  <div class="jumbotron">
+    <div class="container">
+    <button type="button" class="btn btn-color" data-toggle="modal" data-target="#length">Length</button>
+    <button type="button" class="btn btn-color" data-toggle="modal" data-target="#exampleModal">Area</button>
+    <button type="button" class="btn btn-color" data-toggle="modal" data-target="#exampleModal">Volume</button>
+    <button type="button" class="btn btn-color" data-toggle="modal" data-target="#weight">Weight</button>
+    <button type="button" class="btn btn-color" data-toggle="modal" data-target="#exampleModal">Temperature</button>
+  </div>
+</div>
+
+<!-- Length related tags -->
+<div class="modal fade" id="length" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="font-family: 'Amita';font-size: 22px;">Length</h5>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+              <div class="col-sm-12 unit">
+                <label for="quantity">Quantity :</label>
+                <input type="text" class="form-control" id="quantity" onkeypress="return digit_only(this, event);" />
+                <p id="error_msg1"></p>
+              </div>
+              <div class="col-sm-6">
+                  <label for="units">From :</label>
+                  <select id="fromunits" value="units" class="UnitInput form-control">
+                      <option value="cm">Centimetre</option>
+                      <option value="ft">Feet</option>
+                      <option value="in">Inch</option>
+                      <option value="mt">Metre</option>
+                      <option value="km">Kilometre</option>
+                      <option value="ml">Miles</option>
+                      <option value="nl">Nauticle Miles</option>
+                      <option value="yd">Yard</option>
+                      <option value="mm">Millimetre</option>
+                      <option value="nm">Nanometre</option>
+                      <option value="micron">Micrometre</option>
+                  </select>
+                  <p id="error_msg2"></p>
+              </div>
+              <div class="col-sm-6">
+                <label for="units">To :</label>
+                <select id="tounits" value="units" class="UnitInput form-control">
+                  <option value="cm">Centimetre</option>
+                  <option value="ft">Feet</option>
+                  <option value="in">Inch</option>
+                  <option value="mt">Metre</option>
+                  <option value="km">Kilometre</option>
+                  <option value="ml">Miles</option>
+                  <option value="nl">Nauticle Miles</option>
+                  <option value="yd">Yard</option>
+                  <option value="mm">Millimetre</option>
+                  <option value="nm">Nanometre</option>
+                  <option value="micron">Micrometre</option>
+                </select>
+                <p id="error_msg3"></p>
+              </div>
+          </div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="col-sm-6">
+          <p id="success_msg1"></p>
+        </div>
+        <div class="col-sm-6">
+          <button type="button" class="btn btn-warning swap" title="swap" onclick="swap_length()"><img src="{% static 'image/swap.ico' %}" alt=""></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" title="close"><img src="{% static 'image/exit.ico' %}" alt=""></button>
+          <button type="button" class="btn btn-primary" title="evaluate" onclick="lengthConversion()"><img src="{% static 'image/solve.ico' %}" alt=""></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="weight" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="font-family: 'Amita';font-size: 22px;">Weight</h5>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+              <div class="col-sm-12 unit">
+                <label for="quantity">Quantity :</label>
+                <input type="text" class="form-control" id="quantitywt" onkeypress="return digit_only(this, event);" />
+                <p id="error_msg4"></p>
+              </div>
+              <div class="col-sm-6">
+                  <label for="units">From :</label>
+                  <select id="fromweight" value="units" class="UnitInput form-control">
+                      <option value="gm">Gram</option>
+                      <option value="mg">Milligram</option>
+                      <option value="kg">Kilogram</option>
+                      <option value="tn">Metric Tons</option>
+                      <option value="oc">Ounce</option>
+                      <option value="lb">Pound</option>
+                      <option value="qn">Quintal</option>
+                  </select>
+                  <p id="error_msg5"></p>
+              </div>
+              <div class="col-sm-6">
+                <label for="units">To :</label>
+                <select id="toweight" value="units" class="UnitInput form-control">
+                  <option value="gm">Gram</option>
+                  <option value="mg">Milligram</option>
+                  <option value="kg">Kilogram</option>
+                  <option value="tn">Metric Tons</option>
+                  <option value="oc">Ounce</option>
+                  <option value="lb">Pound</option>
+                  <option value="qn">Quintal</option>
+                </select>
+                <p id="error_msg6"></p>
+              </div>
+          </div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="col-sm-6">
+          <p id="success_msg2"></p>
+        </div>
+        <div class="col-sm-6">
+          <button type="button" class="btn btn-warning swap" title="swap" onclick="swap_weight()"><img src="{% static 'image/swap.ico' %}" alt=""></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" title="close"><img src="{% static 'image/exit.ico' %}" alt=""></button>
+          <button type="button" class="btn btn-primary" title="evaluate" onclick="weightConversion()"><img src="{% static 'image/solve.ico' %}" alt=""></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  var msg1 = document.getElementById("error_msg1");
+  var msg2 = document.getElementById("error_msg4");
+
+    function isValid(el, evnt) {
+              var charC = (evnt.which) ? evnt.which : evnt.keyCode;
+              if (charC == 46) {
+                  if (el.value.indexOf('.') === -1) {
+                      return true;
+                  } else {
+                      return false;
+                  }
+              } else {
+                  if (charC > 31 && (charC < 48 || charC > 57))
+                      return false;
+              }
+              return true;
+          }
+
+          function digit_only(t, evnt) {
+              var a = isValid(t, evnt);
+              if (a) {
+                  msg1.innerHTML = "";
+                  msg2.innerHTML = "";
+              } else {
+                  msg1.innerHTML = "Invalid Input, digits only.";
+                  msg2.innerHTML = "Invalid Input, digits only.";
+              }
+              return a;
+          }
+
+</script>

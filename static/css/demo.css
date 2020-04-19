@@ -35,8 +35,8 @@ body{
 /* Create four equal columns that floats next to each other */
 .column {
   margin-top: 10em;
-  margin-left: 15em;
-  float: left;
+  margin-left: 5em;
+  /* float: left; */
   width: 25%;
   padding: 10px;
   height: 300px; /* Should be removed. Only for demonstration */

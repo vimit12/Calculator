@@ -1,11 +1,12 @@
 from django.shortcuts import render,render_to_response
 from django.shortcuts import HttpResponse
-from bokeh.plotting import figure,output_file,show
-from bokeh.embed import components
 import numpy as np
-from bokeh.layouts import gridplot
 import re,math
 import json,random
+from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import send_mail, mail_admins
+from calculator import settings
+
 # Create your views here.
 
 def index(request):
@@ -103,3 +104,48 @@ def vehicle(request):
     return render(request,'vehicle.html', context = {'status':1})
 def animal(request):
     return render(request,'animal.html', context = {'status':1})
+
+def convert(request):
+    return render(request,'convert.html', context = {'status':1})
+
+@csrf_exempt
+def email(request):
+    sent = False
+    if request.method=='POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        name_error,email_error = (None,)*2
+        #validation on forms
+
+        if not re.findall(r'[A-z]+', name) and not re.findall(r'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$', email):
+            name_error = "Please Provive Valid Name."
+            email_error = "Please Provive Valid Email Address."
+            return render(request,'email.html', context = {'name':name_error,'email':email_error})
+        elif not re.findall(r'[A-z]+', name):
+            name_error = "Please Provive Valid Name."
+            return render(request,'email.html', context = {'name':name_error})
+        elif not re.findall(r'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$', email):
+            email_error = "Please Provive Valid Email Address."
+            return render(request,'email.html', context = {'email':email_error})
+        else:
+            # res = mail_admins(subject, message, fail_silently=False)
+            # print(mail_admins(subject, message, fail_silently=False))
+            msg = f'''Dear Admin,\n{message}.\n\nThanks & Regards,\n{name}\n{email}'''
+            res = send_mail(subject, msg, email, ['vim.python.dj@gmail.com'])
+            # res=0
+            if res:
+                msg = f'''Dear {name},\nThank you for your valuable time and giving feedback, we will get back to you soon.\n\nThanks & Regards,\nVimit\n {settings.ADMIN[0][1]}'''
+                send_mail(subject, msg, settings.ADMIN[0][1], [email])
+                print("#"*50)
+                return render(request,'success.html', context = {'sent':True})
+            else:
+                return render(request,'success.html', context = {'sent':False})
+
+        return render(request,'email.html', context = {'name':name_error,'email':email_error})
+    return render(request,'email.html', context = {'sent':sent})
+
+# @csrf_exempt
+# def success(request):
+#     return render(request,'success.html', context = {})

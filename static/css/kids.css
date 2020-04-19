@@ -1,10 +1,10 @@
-.row_container{
-  margin-top: 50px;
-  padding-top: 20px;
-  padding-left: 10px;
+.container{
+  margin-top: 10em;
+  padding-top: 2em;
+  padding-left: 2em;
   width: 82em;
   height: 12em;
-  border: 3px groove rgba(183,18,224,0.27);
+  border: 2px groove rgba(60, 213, 250,0.5);
   border-radius: 17px 17px 17px 17px;
 }
 #btn_size{

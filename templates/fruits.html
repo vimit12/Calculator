@@ -1,3 +1,67 @@
-<!-- {% load static %} -->
+{% load static %}
 {% include "base.html" %}
-{% include "tiles.html" %}
+
+<link rel= "stylesheet" href= "{% static "css/kids.css" %}">
+<script type="text/javascript" src="{% static "js/fruits.js" %}"></script>
+<style media="screen">
+  #label{
+    margin-top: 2em;
+    margin-left: 4em;
+    font-size: 25px;
+    color: #222;
+    text-shadow: 0px 2px 3px #555;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="column">
+        <div class="row_container">
+        <div class="row_1">&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="A" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="B" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="C" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="D" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="E" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="F" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="G" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="H" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button dis" type="button" value="I" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="J" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="K" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="L" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="M" onclick="chart_val(this.value)"/>&nbsp;
+          <br>
+        </div>&nbsp;
+        <div class="row_2">&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="N" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="O" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="P" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="Q" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="R" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="S" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="T" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="U" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button dis" type="button" value="V" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button" type="button" value="W" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button dis" type="button" value="X" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button dis" type="button" value="Y" onclick="chart_val(this.value)"/>&nbsp;
+          <input id="btn_size" class="btn btn-lg button dis" type="button" value="Z" onclick="chart_val(this.value)"/>&nbsp;
+          <br>
+        </div>&nbsp;
+      </div>
+    </div>
+          <div id="chart">
+            <img id="display" src="" alt="">
+            <p id="label"></p>
+          </div>
+  </div>
+  </div>
+</div>
+
+<script>
+    $("document").ready(function () {
+          $("#display").attr("src","https://static.manitobacooperator.ca/wp-content/uploads/2018/11/apple_GettyImages186843005_cmyk.jpg");
+          $(".dis").prop('disabled', true);
+    });
+</script>
